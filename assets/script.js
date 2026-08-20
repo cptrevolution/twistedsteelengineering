@@ -3,22 +3,40 @@ document.querySelectorAll('.year').forEach(el => el.textContent = new Date().get
 
 const PROJECTS = [
   {
-    src: 'assets/hero-warehouse.webp',
-    alt: 'Steel-frame warehouse structure during construction',
-    category: 'Commercial / Structural',
-    title: 'Steel-frame warehouse'
+    src: '/media/file_954e7ac2-f2b8-47fd-ae68-af44b5b54277', alt: 'Contemporary black motorised sliding gate', category: 'Gates & Access', title: 'Motorised sliding gate', description: 'A sleek slatted steel gate that brings practical access control and a strong modern street presence.'
   },
   {
-    src: 'assets/motorised-gate.webp',
-    alt: 'Modern black motorised steel entrance gate',
-    category: 'Residential / Gates',
-    title: 'Motorised entrance gate'
+    src: '/media/file_64de1509-82a7-4bd0-822a-66718d8c034e', alt: 'Motorised steel driveway gate at a residential entrance', category: 'Gates & Access', title: 'Driveway entrance gate', description: 'A made-to-measure driveway gate combining secure automated access with an open, welcoming profile.'
   },
   {
-    src: 'assets/steel-pergola.webp',
-    alt: 'Dark steel pergola over an outdoor entertainment area',
-    category: 'Residential / Outdoor',
-    title: 'Covered entertainment area'
+    src: '/media/file_b3ece2e3-f782-4099-943d-6957359fcee2', alt: 'Black steel fence installed along a white boundary wall', category: 'Fencing & Security', title: 'Boundary wall fencing', description: 'Custom steel boundary fencing that adds security while preserving light, visibility and a clean finish.'
+  },
+  {
+    src: '/media/file_5dfa7194-baf3-4a4d-bf77-723282f04d9b', alt: 'White steel railing fitted to a residential stairway', category: 'Fencing & Security', title: 'Residential stair fencing', description: 'Neat, durable steel railing tailored to make an elevated outdoor area safer and more defined.'
+  },
+  {
+    src: '/media/file_cc4699a3-ebd8-419f-8846-cdd54354da78', alt: 'Steel balcony barrier fitted beneath a window', category: 'Balustrades & Barriers', title: 'Window safety barrier', description: 'A robust steel safety barrier designed for everyday protection without compromising the building exterior.'
+  },
+  {
+    src: '/media/file_b28a1d4a-2774-423e-99d6-e3a89b1c4a0e', alt: 'Steel security gate fitted at a shop entrance', category: 'Commercial Security', title: 'Shopfront security gate', description: 'A practical shopfront gate that secures the premises after hours while keeping the entrance professional.'
+  },
+  {
+    src: '/media/file_b53983f2-89f9-4630-98d1-d0f134cb616d', alt: 'Steel security fencing installed around a home', category: 'Home Security', title: 'Home security fencing', description: 'Purpose-built security fencing that strengthens the property perimeter with a considered residential finish.'
+  },
+  {
+    src: '/media/file_733ed4ee-aad3-4643-adc3-6db1caa36781', alt: 'Steel scaffolding and protective barriers on an industrial site', category: 'Industrial Steelwork', title: 'Industrial safety barriers', description: 'Hard-wearing fabricated barriers that help organise and protect active industrial work areas.'
+  },
+  {
+    src: '/media/file_fb770fd3-5ef8-4196-aed0-e4b6bed30813', alt: 'Decorative black steel security gate at a home entrance', category: 'Home Security', title: 'Decorative security gate', description: 'A custom entrance gate that pairs classic detailing with dependable day-to-day security.'
+  },
+  {
+    src: '/media/file_a1c6bd2d-64cb-4aed-9e8f-1293b9816e6c', alt: 'Ornamental steel home security gate', category: 'Home Security', title: 'Ornamental security gate', description: 'A detailed steel security gate created to protect the home while complementing its existing character.'
+  },
+  {
+    src: '/media/file_45338ddb-c01d-4769-a779-7bca2b0bdeee', alt: 'Steel fencing installed on top of a residential wall', category: 'Fencing & Security', title: 'Wall-top security fencing', description: 'A clean wall-top steel fence that extends perimeter protection with a light, refined visual profile.'
+  },
+  {
+    src: '/media/file_282ee3b0-f795-4f22-b0d4-ebb17eaf4c02', alt: 'Motorised steel gate at a driveway entrance', category: 'Gates & Access', title: 'Automated driveway gate', description: 'A robust automated gate engineered for reliable access, privacy and a smart finished entrance.'
   }
 ];
 
@@ -36,6 +54,7 @@ function projectCard(project, compact = false) {
     <span>
       <small>${project.category}</small>
       <strong>${project.title}</strong>
+      ${compact ? '' : `<em>${project.description}</em>`}
     </span>
   `;
 
@@ -47,7 +66,7 @@ function projectCard(project, compact = false) {
 const homeStrip = document.querySelector('#home-project-strip');
 
 if (homeStrip) {
-  PROJECTS.forEach(project =>
+  PROJECTS.slice(0, 3).forEach(project =>
     homeStrip.appendChild(projectCard(project, true))
   );
 }
@@ -80,8 +99,11 @@ function openLightbox(project) {
     <figure>
       <img src="${project.src}" alt="${project.alt}">
       <figcaption>
-        <small>${project.category}</small>
-        <strong>${project.title}</strong>
+        <div>
+          <small>${project.category}</small>
+          <strong>${project.title}</strong>
+        </div>
+        <p>${project.description}</p>
       </figcaption>
     </figure>
   `;
